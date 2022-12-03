@@ -19,28 +19,37 @@ const corsOpts = {
 };
 
 app.use(cors(corsOpts));
+app.use((request, response, next) => {
+  cors(corsOpts);
+  response.set('Referrer-Policy', 'no-referrer');
+  next();
+})
 
 var magicData = {};
 app.get("/", cors(corsOpts), (req, res) => res.type('html').send(html));
 
 fs.readFile('data.json', 'utf8', function(err, data){
-    magicData = JSON.parse(data); 
+  magicData = JSON.parse(data); 
 });
 
 app.get('/getthemagic', cors(corsOpts), (req, res) => {
-    console.log("/getthemagic");
+  response.set('Referrer-Policy', 'no-referrer');
 
-    res.json(magicData);
+  console.log("/getthemagic");
+
+  res.json(magicData);
 })
 app.get('/getthemagic/:id', cors(corsOpts), (req, res) => {
-    console.log("/getthemagic/" + req.params.id);
+  response.set('Referrer-Policy', 'no-referrer');
 
-    if (magicData[req.params.id]) {
-        res.json(magicData[req.params.id]);
-    }
-    else {
-        res.json({"error": "No data found."});
-    }
+  console.log("/getthemagic/" + req.params.id);
+
+  if (magicData[req.params.id]) {
+      res.json(magicData[req.params.id]);
+  }
+  else {
+      res.json({"error": "No data found."});
+  }
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
