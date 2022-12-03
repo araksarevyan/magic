@@ -19,11 +19,11 @@ const corsOpts = {
 };
 
 app.use(cors(corsOpts));
-app.use((request, response, next) => {
-  cors(corsOpts);
-  response.set('Referrer-Policy', 'no-referrer');
-  next();
-})
+// app.use((request, response, next) => {
+//   cors(corsOpts);
+//   response.set('Referrer-Policy', 'no-referrer');
+//   next();
+// })
 
 var magicData = {};
 app.get("/", cors(corsOpts), (req, res) => res.type('html').send(html));
@@ -33,14 +33,14 @@ fs.readFile('data.json', 'utf8', function(err, data){
 });
 
 app.get('/getthemagic', cors(corsOpts), (req, res) => {
-  response.set('Referrer-Policy', 'no-referrer');
+  res.set('Referrer-Policy', 'no-referrer');
 
   console.log("/getthemagic");
 
   res.json(magicData);
 })
 app.get('/getthemagic/:id', cors(corsOpts), (req, res) => {
-  response.set('Referrer-Policy', 'no-referrer');
+  res.set('Referrer-Policy', 'no-referrer');
 
   console.log("/getthemagic/" + req.params.id);
 
