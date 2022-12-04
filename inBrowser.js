@@ -6,10 +6,10 @@ fetch('https://magic-iq8u.onrender.com/getthemagic/' + tag)
     var wrongAnswerStyle = 'color: red; margin-left:20px;';
     var correctAnswerStyle = 'color:green; font-weight: bold; margin-left:20px;';
     for (var i of data) {
-      console.log(`%c ${i.question} `, questionStyle);
+      console.log("%c " + i.question, questionStyle);
       for (var j of i.answers) {
-        if (j.isCorrect) console.log(`%c ${j.text} `, correctAnswerStyle);
-        else console.log(`%c ${j.text} `, wrongAnswerStyle);
+        if (j.isCorrect) console.log( "%c " + j.text, correctAnswerStyle);
+        else console.log( "%c " + j.text, wrongAnswerStyle);
       }
     }
   });
