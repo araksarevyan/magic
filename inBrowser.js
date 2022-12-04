@@ -1,4 +1,4 @@
-var tag = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+var tag = window.location.href.substring(window.location.href.lastIndexOf('/') + 1).split(';')[0];
 fetch('https://magic-iq8u.onrender.com/getthemagic/' + tag)
   .then((response) => response.json())
   .then((data) => {
