@@ -65,7 +65,7 @@ const magicScript = `
   </head>
   <body>
       <section>
-        <h4>Run this script in browser console when the page of the test is open.</h4>
+        <h4>Run this script in browser console when there is <span style="font-size: 23px;">Test yourself!</span> text.</h4>
       </section>
       <section>
       <pre>
