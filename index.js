@@ -51,7 +51,7 @@ app.get('/getthemagic/:id', cors(corsOpts), (req, res) => {
     res.json(magicData[req.params.id]);
   }
   else {
-    res.json({"error": "No data found."});
+    res.json({"error": "No data found, wrong URL."});
   }
 });
 
